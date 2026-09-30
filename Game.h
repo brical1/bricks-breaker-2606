@@ -21,5 +21,6 @@ public:
 	void Reset();
 	void ResetBall();
 	void CheckCollision();
+
 	
 };
