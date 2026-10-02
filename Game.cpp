@@ -131,8 +131,9 @@ void Game::CheckCollision()
 	if (bricks.empty())
 	{
 		ball.moving = false;
-		Console::SetCursorPosition(50, 12);
-		std::cout << "YOU WIN! press R to restart";
+		std::string win = "YOU WIN! press R to restart";
+		Console::SetCursorPosition((WINDOW_WIDTH - win.length()) / 2, WINDOW_HEIGHT / 2);
+		std::cout << win;
 	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
@@ -144,8 +145,9 @@ void Game::CheckCollision()
 	if (ball.y_position >= WINDOW_HEIGHT - 1)
 	{
 		ball.moving = false;
-		Console::SetCursorPosition(50, 12);
-		std::cout << "DEFEAT press R to restart";
+		std::string lose = "DEFEAT press R to restart";
+		Console::SetCursorPosition((WINDOW_WIDTH - lose.length()) / 2, WINDOW_HEIGHT / 2);
+		std::cout << lose;
 	}
 }
 
