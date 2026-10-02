@@ -22,7 +22,7 @@ void Game::Reset()
 
 	// TODO #2 - Add this brick and 4 more bricks to the vector
 	
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 
 
@@ -35,7 +35,7 @@ void Game::Reset()
 		brick.x_position = 0 + i * 12;
 		brick.y_position = 5;
 		brick.doubleThick = true;
-		brick.color = ConsoleColor::DarkGreen;
+		brick.color = ConsoleColor::DarkCyan;
 		
 		bricks.push_back(brick);
 	}
@@ -117,7 +117,7 @@ void Game::CheckCollision()
 	
 
 	// TODO #5 - If the ball hits the same brick 3 times (color == black), remove it from the vector
-	if (bricks[i].color == DarkCyan)
+	if (bricks[i].color == ConsoleColor::Black)
 
 	{
 		bricks.erase(bricks.begin() + i);
@@ -127,6 +127,13 @@ void Game::CheckCollision()
 
 	// TODO #6 - If no bricks remain, pause ball and display (render) victory text with R to reset
 
+
+	if (bricks.empty())
+	{
+		ball.moving = false;
+		Console::SetCursorPosition(50, 12);
+		std::cout << "YOU WIN! press R to restart";
+	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
 	{
